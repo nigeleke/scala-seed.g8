@@ -22,7 +22,7 @@
 
         jvmInputs = with pkgs; [ jdk coursier mill sbt ];
         jvmHook = ''
-          JAVA_HOME="${jdk}"
+          JAVA_HOME="\${jdk}"
         '';
         jsInputs = with pkgs; [ nodejs yarn ];
         jsHook = ''
