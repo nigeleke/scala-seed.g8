@@ -14,6 +14,8 @@ This template is distributed without any warranty. See <http://creativecommons.o
 
 [nix](https://nixos.org/) and [sbt](https://www.scala-sbt.org/) on your tool-chain.
 
+### Run
+
 ```
 > sbt new nigeleke/scala-seed.g8
 name [My Something Project]: xyz
