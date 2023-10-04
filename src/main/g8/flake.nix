@@ -2,40 +2,21 @@
   description = "$name$-dev";
 
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
-    flake-utils.url = github:numtide/flake-utils;
+    nixpkgs.url = github:nixos/nixpkgs/master;
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [
-            (f: p: {
-              mill = p.mill.override { jre = p.jdk17_headless; };
-              sbt = p.sbt.override { jre = p.jdk17_headless; };
-            })
-          ];
-        };
-        jdk = pkgs.jdk17_headless;
-
-        jvmInputs = with pkgs; [ jdk coursier mill sbt ];
-        jvmHook = ''
-          JAVA_HOME="\${jdk}"
-        '';
-        jsInputs = with pkgs; [ nodejs yarn ];
-        jsHook = ''
-          yarn install
-        '';
-      in
-      {
-        devShells.default = pkgs.mkShell {
-          name = "$name$-dev-shell";
-          buildInputs = jvmInputs ++ jsInputs;
-          shellHook = jvmHook + jsHook;
-        };
-      }
-    );
+  outputs = { self, nixpkgs, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [
+          pkgs.sbt
+          pkgs.vscode 
+        ];
+      };
+    };
 
 }

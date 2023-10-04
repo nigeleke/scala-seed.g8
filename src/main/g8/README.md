@@ -15,3 +15,10 @@
 * [GitHub](https://github.com/nigeleke/$name$)
 * [API - Core](https://nigeleke.github.io/$name$/core/api/index.html)
 * [Coverage Report](https://nigeleke.github.io/$name$/coverage/index.html)
+
+## Development
+
+```
+> nix develop --impure
+> code .
+```
