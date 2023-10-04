@@ -21,7 +21,7 @@ This template is distributed without any warranty. See <http://creativecommons.o
 name [My Something Project]: xyz
 > cd xyz
 xyz> nix flake update
-xyz> nix develop
+xyz> nix develop --impure
 xyz> sbt compile test
 xyz> ...
 ```
