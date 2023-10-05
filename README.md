@@ -12,15 +12,26 @@ This template is distributed without any warranty. See <http://creativecommons.o
 
 ### Prerequisites
 
-[nix](https://nixos.org/) and [sbt](https://www.scala-sbt.org/) on your tool-chain.
+[nix](https://nixos.org/) on your tool-chain.
 
-### Run
+### Development (of the giter8 template)
+
+(and/or) to run `sbt``, if you need to add [sbt](https://www.scala-sbt.org/) then:
+
+```
+> git clone https://github.com/nigeleke/scala-seed.g8
+> cd scala-seed.g8
+> nix develop --impure
+```
+
+### Run (create new project based on this template)
+
+From a `base` folder, e.g. `~/Documents/Development/`
 
 ```
 > sbt new nigeleke/scala-seed.g8
 name [My Something Project]: xyz
 > cd xyz
-xyz> nix flake update
 xyz> nix develop --impure
 xyz> sbt compile test
 xyz> ...
